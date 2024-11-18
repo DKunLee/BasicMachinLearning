@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome | BML</title>
+
+        <!-- Meta Tags -->
+        <meta charset="utf-8">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Style Sheets -->      
+        <link rel="stylesheet" type="text/css" href="{% static 'core/css/welcome.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body class="welcome-page">
+        <!-- Welcome -->
+        <section id="welcome">
+            <div class="inner">
+                <header>
+                    <h1>Welcome to BML</h1>
+                    <h3>Basic Machine Learning</h3>
+                    <p>
+                        Basic knowledges of machine learning with visualization<br>
+                        designed by <a href="https://www.linkedin.com/in/dongkun-lee-4607a2228" target="blank">DK (Dongkun) Lee</a>
+                    </p>
+                </header>
+                <h4>Sign up to get started</h4>
+                <a href="#account" class="ScrlDownToButtons">Down to SignUp button</a>
+            </div>
+        </section>
+    
+        <!-- Account -->
+        <div id="account">
+            <div class="inner">
+                <a href="{% url 'core:signup' %}" class="SignUp">Sign Up</a>
+                <a href="{% url 'core:login' %}" class="LogIn">Log In</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <div class="footer-info">
+                    <p>DrunK Donkey Kong Studios &bull; 
+                        <span>Salt Lake City, UT &bull; Main (801) 558 - 6005</span>
+                    </p>
+                </div>
+                
+                <div. class="social-icons">
+                    <a href="https://github.com/DKunLee" target="blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/dongkun-lee-4607a2228" target="blank"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:ldkun2001@gmail.com" target="blank"><i class="fa-brands fa-google"></i></a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

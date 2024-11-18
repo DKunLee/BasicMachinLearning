@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block webstyle %}
+    <!-- Style Sheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/homepage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'posts/css/createpostpage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/ckeditor_custom.css' %}">
+    <script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'django_ckeditor_5/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Editing Post Contents -->
+    <div class="container">
+        <hr>
+            <p class="fs-1 text-center"><strong class="text-secondary">Edit Post</strong></p>
+        <hr>
+        <form id="editpost-form" method="post" action="{% url 'posts:editpost' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('#editpost-form').addEventListener('submit', function() {
+            document.querySelector('#editpost-form button[type="submit"]').disabled = true;
+        });
+    </script>
+{% endblock %}

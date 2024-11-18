@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block webstyle %}
+    <!-- Style Sheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/homepage.css' %}">
+{% endblock %}
+
+{% block NavBarContent %}
+    <!-- Navigator Bar Contents -->
+    {% if user.is_authenticated and user.profile.can_create_post %}
+        <form action="{% url 'posts:newpost' %}" class="createpost-form">
+            <button type="submit" class="nav-createpost">Create</button>
+        </form>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <!-- Contents -->
+    <section id="front">
+        <div class="inner">
+            <header>
+                <h1>Welcome to BML</h1>
+                <h3>Basic Machine Learning</h3>
+                <p>
+                    Basic knowledges of machine learning with visualization<br>
+                    designed by <a href="https://www.linkedin.com/in/dongkun-lee-4607a2228" target="blank">DK (Dongkun) Lee</a>
+                </p>
+            </header>
+        </div>
+    </section>
+
+    <h1 class="PostText">Posts</h1>
+
+    <form method="get" action="{% url 'core:homepage' %}" class="search-bar">
+        <input name="query" type="text" value="{{ query }}" pattern=".*\S.*" required>
+        <button class="search-btn" type="submit">
+            <span>Search</span>
+        </button>
+    </form>
+    
+
+    <div class="post-grid">
+        {% for post in posts %}
+            <div class="post-item">
+                <a href="{% url 'posts:postdetail' post.id %}">
+                    <div class="thumbnail-frame">
+                        <img src="{{ post.thumbnail.url }}" alt="{{ post.title }}">
+                    </div>
+                    <h2>{{ post.title }}</h2>
+                </a>
+                <p>{{ post.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block webstyle %}
+    <!-- Style Sheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/homepage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'posts/css/createpostpage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/ckeditor_custom.css' %}">
+    <script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'django_ckeditor_5/css/styles.css' %}">  
+{% endblock %}
+
+{% block content %}
+    <!-- Creating Post Contents -->
+    <div class="container">
+        <hr>
+            <p class="fs-1 text-center"><strong class="text-secondary">Add Post</strong></p>
+        <hr>
+        <form id="createpost-form" method="post" action="{% url 'posts:newpost' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('#createpost-form').addEventListener('submit', function() {
+            document.querySelector('#createpost-form button[type="submit"]').disabled = true;
+        });
+    </script>
+{% endblock %}

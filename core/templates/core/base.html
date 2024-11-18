@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} | BML</title>
+
+        <!-- Meta Tags -->
+        <meta charset="utf-8">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Style Sheet -->
+        <link rel="stylesheet" type="text/css" href="{% static 'core/css/base.css' %}">
+        {% block webstyle %}{% endblock %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <!-- Navigator Bar -->
+        <nav>
+            <a href="{% url 'core:homepage' %}" class="nav-logo">BasicMachineLearning (BML)</a>
+
+            <div class="user-info">
+                {% if user.is_authenticated %}
+                    <span class="greeting">Hi, {{ user.username }}!</span>
+                    {% block NavBarContent %}{% endblock %}
+                    <form action="{% url 'core:logout' %}" method="post" class="logout-form">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-signout">Log Out</button>
+                    </form>
+                {% endif %}
+            </div>
+        </nav>
+
+        <!-- Contents -->
+        {% block content %}{% endblock %}
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <div class="footer-info">
+                    <p>DrunK Donkey Kong Studios &bull; 
+                        <span>Salt Lake City, UT &bull; Main (801) 558 - 6005</span>
+                    </p>
+                </div>
+                
+                <div. class="social-icons">
+                    <a href="https://github.com/DKunLee" target="blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/dongkun-lee-4607a2228" target="blank"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:ldkun2001@gmail.com" target="blank"><i class="fa-brands fa-google"></i></a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
