@@ -18,7 +18,7 @@
         <hr>
             <p class="fs-1 text-center"><strong class="text-secondary">Edit Post</strong></p>
         <hr>
-        <form id="editpost-form" method="post" action="{% url 'posts:editpost' %}" enctype="multipart/form-data">
+        <form id="editpost-form" method="post" action="{% url 'posts:editpost' pk=post.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.media }}
             {{ form.as_p }}
