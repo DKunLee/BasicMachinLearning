@@ -16,15 +16,21 @@ Welcome to the **Basic Machine Learning Website** 💻! This Django-based web ap
 * Templates: Base template includes a navbar with a "Create Post" button (visible on the homepage only).
 
 - Welcome Page
+![WelcomePage](README_images/WelcomePage.png)
    - Sign Up
+     ![SignupPage](README_images/SignupPage.png)
    - Login
+     ![LoginPage](README_images/LoginPage.png)
 - Homepage
+![HomePage](README_images/HomePage.png)
    - View List of posts
    - Searching posts
      Below is only avilable for authorized user
         - Create post
         - Delete post
         - Edit post
+   - Post detail
+     ![HomePage](README_images/PostDetailPage.png)
 
 ## 🛠️ Languages Used
 - Django: Backend framework (Python).
